@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Birdflop Nonprofit</title>
+<meta name="description" content="Birdflop is a 501(c)(3) nonprofit that promotes interest in technology and computer science. Current projects: CS Room and Birdflop Hosting.">
+<meta property="og:title" content="Birdflop Nonprofit">
+<meta property="og:description" content="Birdflop is a 501(c)(3) nonprofit that promotes interest in technology and computer science. Current projects: CS Room and Birdflop Hosting.">
+<meta property="og:type" content="website">
+<link rel="icon" href="bird.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap">
+<style>
+  :root {
+    --white: #ffffff;
+    --sky-tint: #eef7fc;
+    --sky: #54daf4;
+    --indigo: #545eb6;
+    --indigo-deep: #3f488f;
+    --sun: #ffd166;
+    --sun-deep: #f2b93b;
+    --mint: #dcf3e6;
+    --navy: #1b2a4a;
+    --slate: #4f5b74;
+    --line: #dfe7ef;
+    --sans: "Nunito", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --radius: 24px;
+  }
+  * { box-sizing: border-box; }
+  html { color-scheme: light; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--navy);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { width: min(66rem, 100% - 2.5rem); margin-inline: auto; }
+  a { color: var(--indigo); text-decoration-thickness: 2px; text-underline-offset: 0.18em; }
+  a:hover { color: var(--indigo-deep); }
+  :focus-visible { outline: 3px solid var(--indigo); outline-offset: 3px; border-radius: 6px; }
+  h1, h2, h3 { line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+  h1 { max-width: 16ch; font-size: clamp(2.5rem, 6.5vw, 4.5rem); font-weight: 900; letter-spacing: -0.025em; text-wrap: balance; }
+  h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 1rem; text-wrap: balance; }
+  h3 { font-size: 1.375rem; font-weight: 800; }
+  p { margin: 0 0 1rem; }
+  .measure { max-width: 38rem; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-weight: 800; font-size: 1.0625rem; line-height: 1;
+    padding: 1rem 1.5rem; border-radius: 999px; text-decoration: none;
+    transition: transform 120ms ease, background-color 120ms ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-sun { background: var(--sun); color: var(--navy); }
+  .btn-sun:hover { background: var(--sun-deep); color: var(--navy); }
+  .btn-ghost { color: var(--indigo); padding-inline: 0.5rem; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+
+  /* Nav */
+  nav { padding: 1.25rem 0; }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .brand { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--navy); font-weight: 900; font-size: 1.375rem; }
+  .brand svg { width: 2.25rem; height: 2.25rem; }
+  nav .btn { padding: 0.75rem 1.25rem; font-size: 1rem; }
+
+  /* Hero */
+  .hero { padding: 3.5rem 0 5rem; }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+  .hero-art { width: 100%; max-width: 24rem; margin-inline: auto; }
+  .hero-art svg { display: block; width: 100%; height: auto; }
+  .hero p.lede { font-size: clamp(1.125rem, 1.8vw, 1.375rem); color: var(--slate); margin: 1.5rem 0 2rem; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; }
+
+  /* Mission */
+  .mission { background: var(--sky-tint); padding: 4.5rem 0; }
+  .mission .wrap { display: grid; grid-template-columns: 1fr 1.3fr; gap: 2rem 4rem; align-items: start; }
+  .mission p { font-size: 1.125rem; }
+  .mission blockquote { margin: 0 0 1.25rem; padding-left: 1.25rem; border-left: 4px solid var(--sky); font-size: 1.125rem; font-weight: 600; color: var(--navy); }
+
+  /* Projects */
+  .projects { padding: 4.5rem 0; }
+  .projects .intro { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 2rem; }
+  .projects .intro p { color: var(--slate); margin: 0; max-width: 32rem; }
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .card {
+    display: flex; flex-direction: column; gap: 0.75rem;
+    padding: 1.75rem; border-radius: var(--radius);
+    color: var(--navy); text-decoration: none;
+    transition: transform 150ms ease;
+  }
+  .card:hover { transform: translateY(-4px); color: var(--navy); }
+  .card.sky { background: #dbf4fb; }
+  .card.mint { background: var(--mint); }
+  .card .mark { width: 3rem; height: 3rem; border-radius: 14px; display: grid; place-items: center; background: var(--white); font-weight: 900; font-size: 1.125rem; }
+  .card.sky .mark { color: #1f4e79; }
+  .card.mint .mark { color: #2d6a4f; }
+  .card p { color: var(--slate); margin: 0; flex: 1; }
+  .card .link { font-weight: 800; color: var(--indigo); }
+
+  /* Impact */
+  .impact { padding: 0 0 4.5rem; }
+  .stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .stats li { border: 2px solid var(--line); border-radius: 18px; padding: 1.75rem 1.75rem 1.5rem; }
+  .stats .value { display: block; font-size: 3.5rem; font-weight: 900; line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+  .stats .value small { font-size: 1.25rem; font-weight: 800; letter-spacing: 0; margin-left: 0.15rem; }
+  .stats .label { color: var(--slate); font-size: 1rem; line-height: 1.5; }
+  .impact .asof { color: var(--slate); font-size: 0.875rem; margin: 1rem 0 0; }
+
+  /* Money */
+  .money { padding: 1rem 0 4.5rem; }
+  .money .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 4rem; align-items: center; }
+  .money p { color: var(--slate); }
+  .money p strong { color: var(--navy); }
+  .flow { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+  .flow li { display: grid; grid-template-columns: 3.25rem 1fr; gap: 1rem; align-items: center; padding: 1rem 1.25rem; border-radius: 18px; border: 2px solid var(--line); }
+  .flow li .ico { width: 3.25rem; height: 3.25rem; border-radius: 50%; display: grid; place-items: center; font-weight: 900; }
+  .flow li.in .ico { background: var(--mint); color: #2d6a4f; }
+  .flow li.gift .ico { background: var(--sun); color: var(--navy); }
+  .flow li.out .ico { background: #dbf4fb; color: #1f4e79; }
+  .flow li b { display: block; font-weight: 800; }
+  .flow li span { color: var(--slate); font-size: 0.9375rem; }
+
+  /* Donate */
+  .donate { padding: 0 0 4.5rem; }
+  .donate .panel {
+    background: var(--indigo); color: var(--white); border-radius: var(--radius);
+    padding: clamp(2rem, 5vw, 3.5rem);
+    display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 2rem; align-items: center;
+  }
+  .donate h2 { color: var(--white); }
+  .donate p { color: #e2e5f5; margin: 0; }
+  .donate .cta { display: grid; gap: 0.75rem; justify-items: start; }
+  .donate .cta .btn { font-size: 1.125rem; padding: 1.1rem 1.75rem; }
+  .donate .cta small { color: #c9cff0; font-size: 0.875rem; line-height: 1.5; }
+
+  footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; font-size: 0.9375rem; color: var(--slate); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; }
+  footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1.25rem; }
+  footer p { margin: 0; }
+
+  @media (max-width: 56rem) {
+    .hero .wrap, .mission .wrap, .money .wrap, .donate .panel { grid-template-columns: 1fr; }
+    .hero .wrap { gap: 2.5rem; }
+    .hero-art { max-width: 17rem; }
+    .stats { grid-template-columns: 1fr; }
+    .hero { padding-top: 1.5rem; padding-bottom: 3.5rem; }
+    .cards { grid-template-columns: 1fr; }
+    .mission, .projects, .money, .donate { padding-block: 3rem; }
+    .impact { padding-block: 0 3rem; }
+    .money { padding-top: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .btn, .card { transition: none; } .card:hover { transform: none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Birdflop home">
+      <svg viewBox="0 0 1080 1080" aria-hidden="true"><defs><linearGradient id="g1" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#54daf4"/><stop offset="1" stop-color="#545eb6"/></linearGradient></defs><path d="M-1886.608-89.36c-8.311-65.774-27.64-219.008-27.64-221.333a.279.279,0,0,1,.09-.159q-.474-4.88-.477-9.885A101.066,101.066,0,0,1-1813.61-421.844a100.671,100.671,0,0,1,71.913,30.1l.093-.042c-.077-.093-8.783-10.549-22.7-24.758-8.216-8.388-16.645-16.459-25.052-23.993-10.51-9.417-21.018-18.013-31.23-25.552a120.5,120.5,0,0,0-40.468-71.567,119.916,119.916,0,0,0-77.984-28.881c-66.215,0-120.083,53.941-120.083,120.244h-.237v116.01h-.24c-.131,132.971-107.6,240.728-240.16,240.728V-330.289H-2300V-449.818h.362V-931.536h0V-1170c132.71,0,240.293,106.764,240.293,238.464v145.112a358.089,358.089,0,0,1,47.7-13.28,362.475,362.475,0,0,1,72.6-7.329,362.455,362.455,0,0,1,72.6,7.329,358.112,358.112,0,0,1,67.622,21.02,360.042,360.042,0,0,1,61.191,33.26,362.833,362.833,0,0,1,53.315,44.049,363.178,363.178,0,0,1,43.99,53.387,360.83,360.83,0,0,1,33.213,61.276A359.3,359.3,0,0,1-1586.118-519a363.948,363.948,0,0,1,7.317,72.7,363.957,363.957,0,0,1-7.317,72.7,359.333,359.333,0,0,1-20.992,67.714,360.95,360.95,0,0,1-33.213,61.277,363.233,363.233,0,0,1-43.99,53.388,362.833,362.833,0,0,1-53.315,44.049,360.017,360.017,0,0,1-61.191,33.259,358.108,358.108,0,0,1-67.622,21.02c-6.636,1.36-13.421,2.548-20.165,3.532Zm-79.831-365.056a27.049,27.049,0,0,1,27.038-27.059,27.048,27.048,0,0,1,27.037,27.059,27.049,27.049,0,0,1-27.037,27.06A27.05,27.05,0,0,1-1966.439-454.416Z" transform="translate(2479.9 1169.7)" fill="url(#g1)"/></svg>
+      Birdflop
+    </a>
+    <a class="btn btn-sun" href="https://www.paypal.com/US/fundraiser/charity/5036975" rel="noopener">Donate</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Helping people get curious about computers.</h1>
+      <p class="lede measure">Birdflop is a nonprofit that enables students, teachers, and hobbyists to build new ideas with technology.</p>
+      <div class="actions">
+        <a class="btn btn-sun" href="https://www.paypal.com/US/fundraiser/charity/5036975" rel="noopener">Donate</a>
+        <a class="btn btn-ghost" href="#projects">Current projects</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="205" r="180" fill="#eef7fc"/>
+
+        <!-- first program: terminal -->
+        <g transform="rotate(-6 118 118)">
+          <rect x="43" y="43" width="150" height="150" rx="28" fill="#1b2a4a"/>
+          <circle cx="70" cy="70" r="6" fill="#ffd166"/>
+          <circle cx="90" cy="70" r="6" fill="#54daf4"/>
+          <circle cx="110" cy="70" r="6" fill="#7ed9a0"/>
+          <path d="M70 108 l20 16 l-20 16" fill="none" stroke="#54daf4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="104" y="131" width="42" height="10" rx="5" fill="#eef7fc"/>
+          <rect x="70" y="156" width="60" height="10" rx="5" fill="#545eb6"/>
+        </g>
+
+        <!-- website: browser window -->
+        <g transform="rotate(4 282 118)">
+          <rect x="207" y="43" width="150" height="150" rx="28" fill="#ffffff" stroke="#dfe7ef" stroke-width="3"/>
+          <path d="M207 71 a28 28 0 0 1 28 -28 h94 a28 28 0 0 1 28 28 v24 h-150 z" fill="#dbf4fb"/>
+          <circle cx="236" cy="69" r="7" fill="#545eb6"/>
+          <rect x="252" y="63" width="56" height="12" rx="6" fill="#ffffff"/>
+          <rect x="230" y="116" width="104" height="12" rx="6" fill="#dfe7ef"/>
+          <rect x="230" y="138" width="72" height="12" rx="6" fill="#dfe7ef"/>
+          <rect x="230" y="160" width="52" height="16" rx="8" fill="#ffd166"/>
+        </g>
+
+        <!-- game server: voxel block -->
+        <g transform="rotate(3 118 282)">
+          <rect x="43" y="207" width="150" height="150" rx="28" fill="#dcf3e6"/>
+          <path d="M118 236 l46 24 l-46 24 l-46 -24 z" fill="#7ed9a0"/>
+          <path d="M72 260 l46 24 v48 l-46 -24 z" fill="#a9794f"/>
+          <path d="M164 260 l-46 24 v48 l46 -24 z" fill="#8c6239"/>
+          <path d="M118 284 l-46 -24 v10 l46 24 z" fill="#2d6a4f"/>
+          <path d="M118 284 l46 -24 v10 l-46 24 z" fill="#3f8a60"/>
+        </g>
+
+        <!-- discord bot: speech bubble with robot -->
+        <g transform="rotate(-4 282 282)">
+          <rect x="207" y="207" width="150" height="150" rx="28" fill="#ffd166"/>
+          <path d="M238 244 h88 a16 16 0 0 1 16 16 v52 a16 16 0 0 1 -16 16 h-50 l-22 18 v-18 h-16 a16 16 0 0 1 -16 -16 v-52 a16 16 0 0 1 16 -16 z" fill="#ffffff"/>
+          <rect x="262" y="268" width="40" height="30" rx="10" fill="#1b2a4a"/>
+          <rect x="280" y="254" width="4" height="12" rx="2" fill="#1b2a4a"/>
+          <circle cx="282" cy="251" r="4" fill="#545eb6"/>
+          <circle cx="274" cy="283" r="4.5" fill="#54daf4"/>
+          <circle cx="290" cy="283" r="4.5" fill="#54daf4"/>
+          <rect x="312" y="276" width="18" height="6" rx="3" fill="#dfe7ef"/>
+          <rect x="312" y="288" width="12" height="6" rx="3" fill="#dfe7ef"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="mission" id="mission">
+  <div class="wrap">
+    <h2>Mission</h2>
+    <div>
+      <blockquote>Birdflop's mission is to promote and encourage interest in technology and computer science, generally but not exclusively through affordable and accessible virtual server hosting.</blockquote>
+      <p>The best way to get interested in computers is to build something with one: a school project, a website, a game server, a first program. We lower the cost and setup barriers to doing so.</p>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Current projects</h2>
+    </div>
+    <div class="cards">
+      <a class="card sky" href="https://csroom.org" rel="noopener">
+        <span class="mark" aria-hidden="true">CS</span>
+        <h3>CS Room</h3>
+        <p>A free browser-based IDE and classroom management platform. Students work in Linux environments with an editor and terminal. Teachers manage and collaborate with their class in one place.</p>
+        <span class="link">csroom.org</span>
+      </a>
+      <a class="card mint" href="https://birdflop.com" rel="noopener">
+        <span class="mark" aria-hidden="true">BF</span>
+        <h3>Birdflop Hosting</h3>
+        <p>Affordable virtual server hosting, originally built for Minecraft. birdflop.com also hosts free tools for server developers, including a timings analyzer and a code-sharing platform.</p>
+        <span class="link">birdflop.com</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="impact" id="impact">
+  <div class="wrap">
+    <h2>Impact</h2>
+    <ul class="stats">
+      <li><span class="value" data-stat="csroom_schools">51</span><span class="label">schools and universities use CS Room, across <span data-stat="csroom_countries">22</span> countries.</span></li>
+      <li><span class="value" data-stat="birdflop_visitors_30d" data-format="compact">236k</span><span class="label">monthly users on Birdflop</span></li>
+    </ul>
+    <p class="asof">Figures as of <span data-stat="updated" data-format="date">October 2026</span>.</p>
+  </div>
+</section>
+
+<section class="money" id="money">
+  <div class="wrap">
+    <div>
+      <h2>How the structure works</h2>
+      <p>Birdflop's revenue comes from hosting and donations. Together, these sources cover the hardware, colocation, and software licenses behind our offerings.</p>
+      <p>Hosting prices on birdflop.com are set to cover costs and further the mission, with excess profit redistributed to customers.</p>
+      <p>Donations help fund our free programs directly. CS Room has server costs for every student and no revenue of its own, so donations keep it free as it grows.</p>
+    </div>
+    <ul class="flow">
+      <li class="in"><span class="ico" aria-hidden="true">$</span><div><b>Hosting revenue</b><span>Covers servers, colocation, and licenses while enabling new projects.</span></div></li>
+      <li class="gift"><span class="ico" aria-hidden="true">+</span><div><b>Donations</b><span>Funds free programs like CS Room.</span></div></li>
+      <li class="out"><span class="ico" aria-hidden="true">&larr;</span><div><b>Reimbursements</b><span>Excess profit from hosting is returned to customers.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="donate" id="donate">
+  <div class="wrap">
+    <div class="panel">
+      <div>
+        <h2>Support Birdflop</h2>
+        <p>Donations enable us to provide free educational tools and accessible technology.</p>
+      </div>
+      <div class="cta">
+        <a class="btn btn-sun" href="https://www.paypal.com/US/fundraiser/charity/5036975" rel="noopener">Donate through PayPal</a>
+        <small>Birdflop is a registered 501(c)(3) tax-exempt organization in the United States, EIN 93-2401009. Donations are tax-deductible to the extent permitted by law.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Birdflop, Inc. is a 501(c)(3) nonprofit. EIN 93-2401009.</p>
+    <ul>
+      <li><a href="https://csroom.org" rel="noopener">CS Room</a></li>
+      <li><a href="https://birdflop.com" rel="noopener">Birdflop Hosting</a></li>
+      <li><a href="https://birdflop.com/resources" rel="noopener">Free tools</a></li>
+      <li><a href="https://github.com/birdflop" rel="noopener">GitHub</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // Live figures: stats.json is refreshed by .github/workflows/update-stats.yml.
+  // If the fetch fails, the numbers written in the HTML stay.
+  fetch('stats.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(d => {
+    if (!d) return;
+    document.querySelectorAll('[data-stat]').forEach(el => {
+      const v = d[el.dataset.stat];
+      if (v === undefined || v === null) return;
+      if (el.dataset.format === 'compact') el.textContent = v >= 10000 ? Math.round(v / 1000) + 'k' : v.toLocaleString('en-US');
+      else if (el.dataset.format === 'date') el.textContent = new Date(v + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+      else el.textContent = v.toLocaleString('en-US');
+    });
+  }).catch(() => {});
+</script>
+</body>
+</html>
