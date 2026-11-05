@@ -27,11 +27,13 @@ jobs:
           today = datetime.date.today()
 
           # 1. CS Room: scrape the figure csroom.org publishes
-          #    ("Teachers at 51 schools and universities in 22 countries use it today")
+          #    ("Trusted by 55 schools in 23 countries."); comments/tags are stripped
+          #    first since React splits the numbers out with <!-- --> markers
           try:
               req = urllib.request.Request("https://www.csroom.org/", headers={"User-Agent": "Mozilla/5.0 (birdflop.org stats updater)"})
               html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "ignore")
-              m = re.search(r"Teachers at (\d+) schools and\s+universities in (\d+) countries", html)
+              text = re.sub(r"\s+", " ", re.sub(r"<[^>]*>", " ", re.sub(r"<!--.*?-->", "", html, flags=re.S)))
+              m = re.search(r"(\d+) schools(?: and universities)? in (\d+) countries", text)
               if m:
                   stats["csroom_schools"] = int(m.group(1))
                   stats["csroom_countries"] = int(m.group(2))
